@@ -104,21 +104,21 @@ function BinarySearchTree() {
     }
 
     this.preOrder = (node) => {
-        debugger;
+        //debugger;
         console.log(node.value);
         if (node.left) this.preOrder(node.left);
         if (node.right) this.preOrder(node.right);
     }
 
     this.postOrder = (node) => {
-        debugger;
+        //debugger;
         if (node.left) this.postOrder(node.left);
         if (node.right) this.postOrder(node.right);
         console.log(node.value);
     }
 
     this.levelOrder = () => {
-        debugger;
+        //debugger;
         let queue = [this.root];
         let result = [];
         while (queue.length) {
@@ -130,6 +130,40 @@ function BinarySearchTree() {
         return result;
     }
 
+    this.findMinHeight = () => {
+        if(!this.root) return -1;
+
+        let heights = {};
+        let height = 0;
+        this.findHeight(this.root, height, heights);
+        return Math.min(...Object.keys(heights));
+    }
+
+    this.findMaxHeight = () => {
+        if(!this.root) return -1;
+
+        let heights = {};
+        let height = 0;
+        this.findHeight(this.root, height, heights);
+        return Math.max(...Object.keys(heights));
+    }
+
+    this.isBalanced = () => {
+        return this.findMaxHeight() - this.findMinHeight() <=1;
+    }
+
+    this.findHeight = (node, height, heights) => {
+        debugger;
+        if(node.left === null && node.right === null){
+            return (heights[height]=true);
+        }
+        if(node.left){
+            this.findHeight(node.left, height + 1, heights);
+        }
+        if(node.right){
+            this.findHeight(node.right, height + 1, heights);
+        }
+    }
     // change code above this line
 }
 
@@ -147,3 +181,6 @@ bst.add(3);
 bst.add(10);
 console.log(bst)
 console.log(bst.traverse('levelorder'));
+console.log(bst.findMinHeight());
+console.log(bst.findMaxHeight());
+console.log(bst.isBalanced());
