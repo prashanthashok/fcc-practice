@@ -61,7 +61,8 @@ function BinarySearchTree() {
     };
 
     this.isPresent = (value) => {
-        if (!this.root) { return null; }
+        if (!this.root) { this.add(value);
+            return false; }
 
         return this.searchTree(this.root, value)
 
@@ -82,7 +83,7 @@ function BinarySearchTree() {
     };
 
     this.traverse = (mode) => {
-        debugger
+        //debugger
         if (!this.root) return null;
         switch (mode) {
             case 'inorder':
@@ -97,7 +98,7 @@ function BinarySearchTree() {
     }
 
     this.inOrder = (node) => {
-        debugger;
+        //debugger;
         if (node.left) this.inOrder(node.left);
         console.log(node.value);
         if (node.right) this.inOrder(node.right);
@@ -130,6 +131,19 @@ function BinarySearchTree() {
         return result;
     }
 
+    this.reverseLevelOrder = () => {
+        if(!this.root) return;
+        let bfsQueue = [this.root];
+        let nodesVisited = [];
+        while(bfsQueue.length){
+            let currentNode = bfsQueue.shift();
+            if(currentNode.right) bfsQueue.push(currentNode.right);
+            if(currentNode.left) bfsQueue.push(currentNode.left);
+            nodesVisited.push(currentNode.value);
+        }
+        return nodesVisited;
+    }
+
     this.findMinHeight = () => {
         if(!this.root) return -1;
 
@@ -153,7 +167,7 @@ function BinarySearchTree() {
     }
 
     this.findHeight = (node, height, heights) => {
-        debugger;
+        //debugger;
         if(node.left === null && node.right === null){
             return (heights[height]=true);
         }
@@ -164,6 +178,100 @@ function BinarySearchTree() {
             this.findHeight(node.right, height + 1, heights);
         }
     }
+
+    /* My solution to delete a leaf node 
+    this.remove = (value) => {
+        if(!this.root) return null;
+        if(!this.root.left && !this.root.right) {
+            this.root = null;
+            return;
+        }
+        let parentAndChild = [];
+        parentAndChild = this.search(this.root, value);
+        //console.log(parentAndChild[0].value, parentAndChild[1].value)
+    }
+
+    this.search = (node, value) => {
+        let parent = null;
+
+        while(node){
+            if(value < node.value){
+                parent = node;
+                node = node.left;
+            } else if (value > node.value) {
+                parent = node;
+                node = node.right;
+            } else if(value === node.value) {
+                if(value > parent.value) {
+                    parent.right = null;
+                } else {
+                    parent.left = null;
+                }
+                return;
+                //return [parent, node];      
+                //node to be deleted
+            } else {
+                //node not found
+                return null;
+            }
+            
+        }
+    } */
+
+    this.remove = function(value) {
+        if (this.root === null) {
+          return null;
+        }
+        var target;
+        var parent = null;
+        // find the target value and its parent
+        (function findValue(node = this.root) {
+          if (value == node.value) {
+            target = node;
+          } else if (value < node.value && node.left !== null) {
+            parent = node;
+            return findValue(node.left);
+          } else if (value < node.value && node.left === null) {
+            return null;
+          } else if (value > node.value && node.right !== null) {
+            parent = node;
+            return findValue(node.right);
+          } else {
+            return null;
+          }
+        }).bind(this)();
+        if (target === null) {
+          return null;
+        }
+        // count the children of the target to delete
+        var children = (target.left !== null ? 1 : 0) + (target.right !== null ? 1 : 0);
+        // case 1: target has no children
+        if (children === 0) {
+          if (target == this.root) {
+            this.root = null;
+          }
+          else {
+            if (parent.left == target) {
+              parent.left = null;
+            } else {
+              parent.right = null;
+            }
+          }
+        }
+        // case 2: target has one child, change code below this line
+        if(children === 1){
+            if(target == this.root){
+                this.root = target.left || target.right;
+            }
+            else {
+                if(parent.left == target) {
+                    parent.left = target.left || target.right;
+                } else {
+                    parent.right = target.left || target.right;
+                }
+            }
+        }
+      }
     // change code above this line
 }
 
@@ -184,3 +292,5 @@ console.log(bst.traverse('levelorder'));
 console.log(bst.findMinHeight());
 console.log(bst.findMaxHeight());
 console.log(bst.isBalanced());
+bst.remove(10);
+console.log(bst.traverse('inorder'));
