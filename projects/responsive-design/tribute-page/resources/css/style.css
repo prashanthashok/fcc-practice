@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#main {
+  display: flex;
+}
+
+#title-section {
+  background-color: #fbe8d3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#image {
+  max-width: 100%;
+}
+
+.tribute-info {
+  width: auto;
+}
+
+@media all and (max-width: 1024px) {
+  #main {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #title-section {
+  }
+}
+/* @media all and (max-width: 839px) {
+  ...;
+}
+@media all and (max-width: 480px) {
+  ...;
+} */
