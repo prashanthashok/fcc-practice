@@ -6,6 +6,7 @@
 
 #main {
   display: flex;
+  flex-direction: column;
 }
 
 #title-section {
@@ -13,26 +14,45 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  text-align: center;
+
+  /* text-align: center; */
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+h1 {
+  font-family: "Montez", cursive;
+  font-size: 4rem;
+}
+
+h3 {
+  font-size: 3rem;
 }
 
 #image {
   max-width: 100%;
 }
 
-.tribute-info {
-  width: auto;
+.text {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.4rem;
 }
 
-@media all and (max-width: 1024px) {
+.conclusion {
+  font-size: 2.4rem;
+}
+
+#tribute-info {
+  width: auto;
+  margin: 5%;
+}
+
+/* @media all and (max-width: 1024px) {
   #main {
     display: flex;
     flex-wrap: wrap;
   }
-
-  #title-section {
-  }
-}
+} */
 /* @media all and (max-width: 839px) {
   ...;
 }
