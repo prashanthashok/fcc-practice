@@ -4,13 +4,33 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #e3fdfd;
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 100;
+  font-size: 3.2rem;
+}
+
+h3 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 2.2rem;
+}
+
 #main {
   display: flex;
   flex-direction: column;
 }
 
+.text {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+}
+
 #title-section {
-  background-color: #fbe8d3;
+  background-color: #cbf1f5;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -20,15 +40,22 @@
   justify-content: space-evenly;
 }
 
-h1 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 100;
-  font-size: 3.6rem;
+#title {
+  margin: 2%;
+  text-align: center;
 }
 
-h3 {
-  font-family: "Open Sans", sans-serif;
-  font-size: 2.4rem;
+#img-caption {
+  text-align: right;
+}
+
+.caption {
+  font-size: 0.6rem;
+}
+
+.introduction {
+  text-align: justify;
+  font-size: 1.2rem;
 }
 
 #image {
@@ -38,25 +65,38 @@ h3 {
   display: block;
 }
 
-.facts,
-.fact {
-  margin: 2%;
-}
-
-.text {
-  font-family: "Open Sans", sans-serif;
-  font-size: 1.4rem;
-}
-
 .conclusion {
   font-family: "Montez", cursive;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-style: italic;
+  background-color: #a6e3e9;
 }
 
 #tribute-info {
   width: auto;
   margin: 2%;
+  text-align: center;
+  background-color: #e3fdfd;
+}
+
+.facts {
+  margin-top: 1%;
+}
+
+.fact-container {
+  margin: 5% 0%;
+}
+
+ul {
+  text-align: justify;
+  width: 50vw;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+#footer {
+  margin: 2%;
+  text-align: center;
 }
 
 /* @media all and (max-width: 1024px) {
