@@ -22,6 +22,11 @@ h3 {
 #main {
   display: flex;
   flex-direction: column;
+  width: 50vw;
+  margin: 0 auto;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 3px 3px 5px 6px #ccc; /* Firefox 3.5 - 3.6 */
+  box-shadow: 3px 3px 5px 6px #ccc; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 .text {
@@ -53,11 +58,6 @@ h3 {
   font-size: 0.6rem;
 }
 
-.introduction {
-  text-align: justify;
-  font-size: 1.2rem;
-}
-
 #image {
   height: auto;
   max-width: 100%;
@@ -77,21 +77,26 @@ h3 {
   margin: 2%;
   text-align: center;
   background-color: #e3fdfd;
+  display: flex;
+  flex-direction: column;
 }
 
-.facts {
-  margin-top: 1%;
+.introduction {
+  text-align: justify;
+  font-size: 1.2rem;
 }
 
-.fact-container {
-  margin: 5% 0%;
+.description {
+  align-self: center;
 }
 
 ul {
   text-align: justify;
-  width: 50vw;
   margin: 0 auto;
   line-height: 1.6;
+}
+.fact-container {
+  margin: 5% 10%;
 }
 
 #footer {
